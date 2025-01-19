@@ -155,30 +155,19 @@ File handling and Exception handling -Python programs.
     print("program has finished running!")
 
   Explanation:
-  
+
    * Defines a function named get_positive_integer(). This function is designed to get a single positive integer from the user.
-  
    * begins a try block. The code inside this block will be executed, and if any exceptions occur within this block, they will be handled by the corresponding except block.
-   
    * prompts the user to "Enter the list elements" and then attempts to convert the user's input into an integer using the int() function.
-   
    * checks if the entered number is less than or equal to zero,If condition is true raises a ValueError with the message "The number should not less than zero!". This signals that the input is invalid.
-  
    * If the number is positive (greater than zero), this line returns the valid integer value. This effectively exits the try block and breaks out of the while loop.
-   
    * prompts the user to "Enter the number of list elements" and then converts the user's input into an integer.creates an empty list named positive_list
-   
    * arts a loop that will iterate len_list number of times,In each iteration of the loop, this line calls the get_positive_integer() function.
-   
    * The get_positive_integer() function will prompt the user for a positive integer and return it.The returned value (the positive integer) is then appended to the positive_list.
-  
    * another try block for the average calculation,prints the calculated average to the console.
-   
    * except block that will catch any exception that occurs during the average calculation. It's generally not recommended to use a general except block without specifying the type of exception you're 
      expecting, as it can mask unexpected errors.
-   
    * If any exception occurs within the average calculation try block, this line prints a generic error message.
-   
    * Finally block  prints the message "program has finished running!" to indicate that the program has completed its execution.
 
 ## Exercise-7:
@@ -187,11 +176,27 @@ File handling and Exception handling -Python programs.
 
   code:
   
-    file1=open("C:\\Users\\anshe\\OneDrive\\Desktop\\Python_assngmt-5-file.txt","r")
-    print(file1.read())
+    try:
+    name=input("Enter the file_name=")
+    with open(name,'w') as file1:
+        string=input("Enter the file content:")
+        file1.write(string)
+        
+    print(f"Welcome to the {name} file")
+
+
+    except:
+    print("Unexpected error occur")
 
   Explanation:
   
-   * Create a text file named " Python_assngmt-5-file" in desktop.
-   * Then open the file using the open function
-   * Read the content in the file and display it.
+   * begins a try block. The code within this block is executed, and if any errors occur during its execution, the program will jump to the except block.
+   * prompts the user to enter the desired filename and stores the user's input in the variable name.
+   * open(name, 'w') attempts to open a file with the given filename (name) in "write" mode ('w').
+   * If the file doesn't exist, it will be created,If the file already exists, it will be overwritten.
+   * assigns the opened file object to the variable file1.
+   * prompts the user to enter the content they want to write to the file and stores the input in the variable string.
+   * writes the content stored in the string variable to the file represented by the file1 object.file is automatically closed when the with block ends.
+   * prints a success message indicating that the file has been created/written to successfully.
+   * If any error occurs within the try block, the program execution will jump to this block.
+   * prints a generic error message "Unexpected error occur" if any exception is encountered.
